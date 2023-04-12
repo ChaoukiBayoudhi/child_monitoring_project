@@ -15,7 +15,7 @@ class Person(models.Model):
         #or
         return 'firstName = %s, lastName = %s, birthdate = %s' % self.firstName,self.lastName,self.birthdate
 class Parent(Person):
-    nb_childs=models.PositiveSmallIntegerField(default=1)
+    nb_chields=models.PositiveSmallIntegerField(default=1)
     class Meta:
         db_table='parent'
     def __str__(self):
@@ -27,3 +27,4 @@ class Parent(Person):
 
 class Child(Person):
     level=models.CharField(max_length=50,choices=[('1ST','first study class'),('2ND','second study class'),('3RD','third study class')],default='1ST')
+    parent=models.ForeignKey(Parent,on_delete=models.CASCADE)
