@@ -4,6 +4,7 @@ from .models import Child, Parent
 #this class will be used each time we want to serialize a Parent object to JSON
 #or deserialize a JSON to a Parent object
 class ParentSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = Parent
         fields = '__all__'
