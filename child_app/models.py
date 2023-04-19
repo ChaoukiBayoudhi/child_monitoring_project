@@ -25,7 +25,7 @@ class Person(models.Model):
         #or
         return 'firstName = %s, lastName = %s, birthdate = %s' % self.firstName,self.lastName,self.birthdate
 class Parent(Person):
-    nb_chields=models.PositiveSmallIntegerField(default=1)
+    nb_children=models.PositiveSmallIntegerField(default=1)
     class Meta:
         db_table='parents'
     def __str__(self):
@@ -34,7 +34,8 @@ class Parent(Person):
         #return f'firstName = {self.firstName}, lastName = {self.lastName}, birthdate = {self.birthdate}'
         #or
         #return 'firstName = %s, lastName = %s, birthdate = %s' % self.firstName,self.lastName,self.birthdate
-        return f'firstName = {self.firstName}, lastName = {self.lastName}'
+        #return f'firstName = {self.firstName}, lastName = {self.lastName}'
+        return f'id={self.id}'
 class Child(Person):
     level=models.CharField(max_length=50,choices=[('1ST','first study class'),('2ND','second study class'),('3RD','third study class')],default='1ST')
     parent=models.ForeignKey(Parent,on_delete=models.CASCADE)
@@ -43,6 +44,8 @@ class Child(Person):
         db_table='children'
     def __str__(self):
         return f'firstName = {self.firstName}, lastName = {self.lastName}'
+
+    
 
 #define the model Task:
 class Task(models.Model):
