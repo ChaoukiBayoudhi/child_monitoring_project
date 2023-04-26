@@ -21,6 +21,8 @@ class ChildViewSet(viewsets.ModelViewSet):
 
     #customize methods:
     #get the list of children of a parent
+    #detail=True means that the method will be applied to a single instance
+    #detail=False means that the method will be applied to a list of instances
     @action(detail=True, methods=['get'])
     def parent_children(self, request, pk=None):
         pass
